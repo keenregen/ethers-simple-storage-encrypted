@@ -12,7 +12,14 @@ const main = async () => {
   // endpoint to connect: http://127.0.0.1:8545
   const provider = new ethers.providers.JsonRpcProvider(process.env.rpcPoint);
 
-  const wallet = new ethers.Wallet(process.env.privateKey, provider);
+  const encryptedKey1 = fs.readFileSync("./.encryptedKey.json", "utf8");
+
+  // const wallet = new ethers.Wallet(process.env.privateKey, provider);
+  let wallet = new ethers.Wallet.fromEncryptedJsonSync(
+    encryptedKey1,
+    process.env.privateKeyPass
+  );
+  wallet = await wallet.connect(provider);
 
   const abi = fs.readFileSync("SimpleStorage_sol_SimpleStorage.abi", "utf8");
 

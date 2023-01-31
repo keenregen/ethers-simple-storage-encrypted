@@ -1,3 +1,5 @@
-# Ethers.js Study 1 SimpleStorage v1
+# Ethers.js Study 1
 
-## For Local Test
+## SimpleStorage v1 (encryption inclusion)
+
+### For Local Test
